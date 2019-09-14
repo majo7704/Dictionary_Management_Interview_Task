@@ -1,0 +1,80 @@
+{
+  "dictionaries": [
+    {
+      "id": 1,
+      "name": "Apple iPhone 6s",
+      "color": "Stonegrey",
+      "price": "CHF 769",
+      "validated": false
+    },
+    {
+      "id": 2,
+      "name": "Samsung Galaxy S8",
+      "color": "Black",
+      "price": "CHF 569",
+      "validated": true
+    },
+    {
+      "id": 3,
+      "name": "Huawei P9",
+      "color": "Silver",
+      "price": "CHF 272",
+      "validated": true
+    },
+    {
+      "name": "iPhone SE",
+      "validated": true,
+      "color": "Black",
+      "id": 4
+    },
+    {
+      "name": "Samsung G8",
+      "color": "Black",
+      "validated": false,
+      "id": 5
+    },
+    {
+      "name": "iPhone Pro 11",
+      "color": "Turquoise",
+      "validated": true,
+      "id": 6
+    }
+  ],
+  "colors": [
+    {
+      "id": 1,
+      "domain": "Stonegrey",
+      "range": "Dark Grey"
+    },
+    {
+      "id": 2,
+      "domain": "Midnight Black",
+      "range": "Black"
+    },
+    {
+      "id": 3,
+      "domain": "Mystic Silver",
+      "range": "Silver"
+    },
+    {
+      "id": 4,
+      "domain": "Mystic White",
+      "range": "White"
+    },
+    {
+      "id": 5,
+      "domain": "Caribbean Sea",
+      "range": "Turquoise"
+    },
+    {
+      "id": 6,
+      "domain": "Midnight Blue",
+      "range": "Dark Blue"
+    },
+    {
+      "domain": "Hard Coal",
+      "range": "Anthracite",
+      "id": 7
+    }
+  ]
+}
