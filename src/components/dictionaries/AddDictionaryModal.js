@@ -7,24 +7,27 @@ import PropTypes from 'prop-types'
 
 const AddDictionaryModal = ({addDictionary}) => {
   const [name, setName] = useState('');
-  const [validated, setValidated] = useState(false);
   const [color, setColor] = useState('')
-
+  const [price, setPrice] = useState('')
+  const [validated, setValidated] = useState(false);
+  
   const onSubmit = () => {
     if (name === '' || color === '') {
-      M.toast({ html: 'Please enter name and color' })
+      M.toast({ html: 'Please enter name color & price' })
     } else {
       const newDictionary = {
         name,
         color,
+        price,
         validated
-      }
-      addDictionary(newDictionary)
+      };
+      addDictionary(newDictionary);
 
-      M.toast({ html:`Dictionary added for ${color}`})
+      M.toast({ html: `Dictionary added for ${color}` });
       //Clear Fields
       setName('');
       setColor('');
+      setPrice('');
       setValidated(false)
     }
   }
@@ -52,18 +55,14 @@ const AddDictionaryModal = ({addDictionary}) => {
             </select>
           </div>
         </div>
-        {/* <div className="row">
+        <div className='row'>
           <div className="input-field">
-            <select name="domain" value={domain} className="browser-default" onChange={e => setDomain(e.target.value)}>
-              <option value="" disabled>Select Domain</option>
-              <option value="Stonegrey">Stonegrey</option>
-              <option value="Midnight Blackk">Midnight Black</option>
-              <option value="Silver">Mystic Silver</option>
-              <option value="Mystic White">Mystic White</option>
-              <option value="Caribbean Sea">Caribbean Sea</option>
-            </select>
+            <input type="number" name='price' value={price} onChange={e => setPrice(e.target.value)} />
+            <label htmlFor="price" className="active">
+              Enter Price CHF
+          </label>
           </div>
-        </div> */}
+        </div>
         <div className="row">
           <div className="input-field">
             <p>
@@ -74,19 +73,22 @@ const AddDictionaryModal = ({addDictionary}) => {
             </p>
           </div>
         </div>
-      </div>
       <div className="modal-footer">
         <a href="#!"onClick={onSubmit} className="modal-close waves-effect waves-light blue btn">Enter</a>
+      </div>
       </div>
     </div>
   )
 }
 AddDictionaryModal.propTypes = {
-  addDictionary: PropTypes.func.isRequired,
+  addDictionary: PropTypes.func.isRequired
 }
 
 const modalStyle = {
   width: '75%',
   height: '75%'
 }
-export default connect(null, { addDictionary })( AddDictionaryModal)
+export default connect(
+  null,
+  { addDictionary }
+)(AddDictionaryModal)

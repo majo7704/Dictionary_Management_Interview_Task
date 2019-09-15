@@ -1,31 +1,49 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 import M from 'materialize-css/dist/js/materialize.min.js';
+import {updateDictionary} from '../../actions/dictionaryActions'
 
-const EditDictionaryModal = () => {
+const EditDictionaryModal = ({current, updateDictionary}) => {
   const [name, setName] = useState('');
-  const [validated, setValidated] = useState(false);
-  const [range, setRange] = useState('')
-  const [domain, setDomain] = useState('')
+  const [validated, setValidated] = useState();
+  const [color, setColor] = useState('')
+  const [price, setPrice] = useState('')
   const [colors, setColors] = useState('')
-
+  useEffect(() => {
+    if (current) {
+      setName(current.name);
+      setColor(current.color);
+      setPrice(current.price);
+      setValidated(current.validated)
+  }
+}, [current])
   const onSubmit = () => {
-    if (name === '' || range === '' || domain === '') {
-      M.toast({ html: 'Please enter name then choose range and domain' })
+    if (name === '' || color === '') {
+      M.toast({ html: 'Please edit name, color or price' })
     } else {
-      console.log(name, range, domain, validated)
+      const updDictionary = {
+        id: current.id,
+        name,
+        color,
+        price,
+        validated
+      }
+      updateDictionary(updDictionary);
+      M.toast({html: `Dictionary ${name} was updated`})
       //Clear Fields
       setName('');
-      setRange('');
-      setDomain('');
+      setColor('');
+      setPrice('');
       setValidated(false)
     }
   }
-  const handleChange = (e, id) => {
-    const match = colors.find(color => color.id === id);
-    if (e.target.id === 'domain') match.domain = e.target.value;
-    if (e.target.id === 'range') match.range = e.target.value;
-    setColors({ colors: [...colors] })
-  }
+  // const handleChange = (e, id) => {
+  //   const match = colors.find(color => color.id === id);
+  //   if (e.target.id === 'domain') match.domain = e.target.value;
+  //   if (e.target.id === 'range') match.range = e.target.value;
+  //   setColors({ colors: [...colors] })
+  // }
   return (
     <div id='edit-dictionary-modal' className='modal' style={modalStyle}>
       <div className='modal-content'>
@@ -33,15 +51,12 @@ const EditDictionaryModal = () => {
         <div className='row'>
           <div className="input-field">
             <input type="text" name='name' value={name} onChange={e => setName(e.target.value)} />
-            <label htmlFor="name" className="active">
-              Dictionary Name
-          </label>
           </div>
         </div>
         <div className="row">
           <div className="input-field">
-            <select name="range" value={range} className="browser-default" onChange={e => setRange(e.target.value)}>
-              <option value="" disabled>Select Range</option>
+            <select name="color" value={color} className="browser-default" onChange={e => setColor(e.target.value)}>
+              <option value="" disabled>Select Color</option>
               <option value="Dark Grey">Dark Grey</option>
               <option value="Black">Black</option>
               <option value="Silver">Silver</option>
@@ -50,16 +65,9 @@ const EditDictionaryModal = () => {
             </select>
           </div>
         </div>
-        <div className="row">
+        <div className='row'>
           <div className="input-field">
-            <select name="domain" value={domain} className="browser-default" onChange={e => setDomain(e.target.value)}>
-              <option value="" disabled>Select Domain</option>
-              <option value="Stonegrey">Stonegrey</option>
-              <option value="Midnight Blackk">Midnight Black</option>
-              <option value="Silver">Mystic Silver</option>
-              <option value="Mystic White">Mystic White</option>
-              <option value="Caribbean Sea">Caribbean Sea</option>
-            </select>
+            <input type="number" name='price' value={price} onChange={e => setPrice(e.target.value)} />
           </div>
         </div>
         <div className="row">
@@ -70,11 +78,11 @@ const EditDictionaryModal = () => {
                 <span>Validated</span>
               </label>
             </p>
-          </div>
         </div>
-      </div>
+        </div>
       <div className="modal-footer">
         <a href="#!" onClick={onSubmit} className="modal-close waves-effect waves-light blue btn">Enter</a>
+      </div>
       </div>
     </div>
   )
@@ -83,4 +91,11 @@ const modalStyle = {
   width: '75%',
   height: '75%'
 }
-export default EditDictionaryModal
+EditDictionaryModal.propTypes = {
+  current: PropTypes.object,
+  updateDictionary: PropTypes.func.isRequired,
+}
+const mapStateToProps = state => ({
+  current: state.dictionary.current
+})
+export default connect(mapStateToProps, {updateDictionary}) (EditDictionaryModal)

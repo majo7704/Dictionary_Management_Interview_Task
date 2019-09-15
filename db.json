@@ -2,42 +2,31 @@
   "dictionaries": [
     {
       "id": 1,
-      "name": "Apple iPhone 6s",
-      "color": "Stonegrey",
-      "price": "CHF 769",
-      "validated": false
-    },
-    {
-      "id": 2,
-      "name": "Samsung Galaxy S8",
-      "color": "Black",
-      "price": "CHF 569",
+      "name": "Galaxy S8",
+      "color": "Silver",
+      "price": "123",
       "validated": true
     },
     {
-      "id": 3,
-      "name": "Huawei P9",
+      "id": 2,
+      "name": "Nokia N516",
       "color": "Silver",
-      "price": "CHF 272",
+      "price": "276",
       "validated": true
     },
     {
       "name": "iPhone SE",
-      "validated": true,
-      "color": "Black",
-      "id": 4
-    },
-    {
-      "name": "Samsung G8",
-      "color": "Black",
-      "validated": false,
-      "id": 5
-    },
-    {
-      "name": "iPhone Pro 11",
       "color": "Turquoise",
+      "price": "356",
       "validated": true,
-      "id": 6
+      "id": 3
+    },
+    {
+      "name": "Apple iPhone Pro 11",
+      "color": "Turquoise",
+      "price": "999",
+      "validated": true,
+      "id": 4
     }
   ],
   "colors": [

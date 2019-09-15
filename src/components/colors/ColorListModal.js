@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import ColorItem from './ColorItem'
+import {connect} from 'react-redux'
 
 const ColorListModal = () => {
   const [colors, setColors] = useState([]);

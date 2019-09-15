@@ -18,10 +18,10 @@ const Dictionaries = ({dictionary:{dictionaries, loading}, getDictionaries}) => 
   }
   
   return (
-    <ul className="collection with-header">
-      <li className="collection-header">
+    <ul id='dictionaries-list' className="collection with-header">
+      {/* <li className="collection-header">
         <h4 className="center">Dictionaries</h4>
-      </li>
+      </li> */}
       {!loading && dictionaries.length === 0 ? (<p className="center">No dictionaries to show...</p>) :
         <div>
           {(dictionaries.map(dictionary => <DictionaryItem dictionary={dictionary} key={dictionary.id}/>))}
