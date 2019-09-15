@@ -24,12 +24,12 @@ const SearchBar = ({ searchDictionaries }) => {
           <ul className="tabs tabs-fixed-width tabs-s-demo z-depth-0" >
             <li className="tab col s3"><a className="active" href="#dictionaries-list">Dictionaries</a></li>
             <li className="tab col s3"><a href="#test2">Validation tests</a></li>
-            <li className="tab col s3"><a href="#test4">Test 4</a></li>
+            
           </ul>
         </div>
         <div id="test1" className="col s12">Test 1</div>
         <div id="test2" className="col s12">Test 2</div>
-        <div id="test4" className="col s12">Test 4</div>
+        
       </div>
     </nav>
     

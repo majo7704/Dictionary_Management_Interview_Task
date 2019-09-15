@@ -1,7 +1,12 @@
 import React, { useState } from 'react'
+import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
+import {addColor} from '../../actions/colorActions'
+
 import M from 'materialize-css/dist/js/materialize.min.js';
 
-const AddColorModal = () => {
+
+const AddColorModal = ({addColor}) => {
   const [validated, setValidated] = useState(false);
   const [range, setRange] = useState('')
   const [domain, setDomain] = useState('')
@@ -11,7 +16,11 @@ const AddColorModal = () => {
     if (range === '' || domain === '') {
       M.toast({ html: 'Please enter a range and domain' })
     } else {
-      console.log(range, domain)
+      addColor({
+        range,
+        domain
+      })
+      M.toast({ html: `${range.toUpperCase()} was paired up with ${domain.toUpperCase()}` })
       //Clear Fields
       setRange('');
       setDomain('');
@@ -50,5 +59,7 @@ const AddColorModal = () => {
     </div>
   )
 }
-
-export default AddColorModal
+AddColorModal.propTypes = {
+  addColor: PropTypes.func.isRequired
+}
+export default connect(null,{addColor}) (AddColorModal)

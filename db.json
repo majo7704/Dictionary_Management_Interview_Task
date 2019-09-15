@@ -22,11 +22,11 @@
       "id": 3
     },
     {
+      "id": 4,
       "name": "Apple iPhone Pro 11",
-      "color": "Turquoise",
+      "color": "YellowMidnight yellow",
       "price": "999",
-      "validated": true,
-      "id": 4
+      "validated": true
     }
   ],
   "colors": [
@@ -64,6 +64,11 @@
       "domain": "Hard Coal",
       "range": "Anthracite",
       "id": 7
+    },
+    {
+      "range": "Yellow",
+      "domain": "Midnight yellow",
+      "id": 8
     }
   ]
 }

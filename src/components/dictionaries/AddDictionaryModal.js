@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import ColorSelectOptions from '../colors/ColorSelectOptions'
 import M from 'materialize-css/dist/js/materialize.min.js';
 import { connect } from 'react-redux'
 import {addDictionary} from '../../actions/dictionaryActions'
@@ -47,11 +48,7 @@ const AddDictionaryModal = ({addDictionary}) => {
           <div className="input-field">
             <select name="color" value={color} className="browser-default" onChange={e => setColor(e.target.value) }>
               <option value="" disabled>Select Color</option>
-              <option value="Dark Grey">Dark Grey</option>
-              <option value="Black">Black</option>
-              <option value="Silver">Silver</option>
-              <option value="White">White</option>
-              <option value="Turquoise">Turquoise</option>
+              <ColorSelectOptions/>
             </select>
           </div>
         </div>
